@@ -6,7 +6,6 @@ from .els import Sensor
 
 
 class CollectApp:
-
     def __init__(self, config):
         self._client = None
         self._config = config
@@ -23,7 +22,8 @@ class CollectApp:
         """
         topic_parts = msg.topic.split('/')
 
-        if len(topic_parts) == 3 and self._sensors.get(topic_parts[1], None) is not None and topic_parts[2] == 'from_device':
+        if len(topic_parts) == 3 and self._sensors.get(topic_parts[1], None) is not None and topic_parts[
+            2] == 'from_device':
             self._sensors[topic_parts[1]] = []
             try:
                 data = msg.payload.decode('utf-8')
@@ -48,10 +48,8 @@ class CollectApp:
         :param userdata:
         :param flags:
         :param rc:
-        :return:
         """
         pass
-
 
     def on_sensor_update(self, sensor_id):
         pass
@@ -86,4 +84,3 @@ class CollectApp:
         Stop app
         """
         self._client.disconnect()
-
