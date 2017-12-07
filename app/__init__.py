@@ -3,6 +3,7 @@
 import json
 import paho.mqtt.client as mqtt_client
 from .els import Sensor
+from .utils import get_mac_with_sensors, get_match_intervals
 
 
 class CollectApp:
@@ -52,7 +53,12 @@ class CollectApp:
         pass
 
     def on_sensor_update(self, sensor_id):
-        pass
+        if self._sensors.get(sensor_id, None) is not None:
+            pass
+        mac = get_mac_with_sensors(list(self._sensors))
+
+
+
 
     def start(self):
         """
