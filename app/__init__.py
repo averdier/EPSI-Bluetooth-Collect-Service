@@ -34,10 +34,11 @@ class CollectApp:
 
             for device in data['devices']:
                 self._sensors[topic_parts[1]].append({
-                    data['start_timestamp'],
-                    data['end_timestamp'],
-                    device['mac'],
-                    device['rssi']
+                    'device_id': topic_parts[1],
+                    'start_timestamp': data['start_timestamp'],
+                    'end_timestamp': data['end_timestamp'],
+                    'mac': device['mac'],
+                    'rssi': device['rssi']
                 })
 
             self.on_sensor_update(topic_parts[1])
@@ -56,9 +57,6 @@ class CollectApp:
         if self._sensors.get(sensor_id, None) is not None:
             pass
         mac = get_mac_with_sensors(list(self._sensors))
-
-
-
 
     def start(self):
         """

@@ -12,6 +12,13 @@ def mac_in_sensor_data_list(mac_address, data_list):
 
 
 def find_in_sensor_data_list_from_mac_address(mac_address, data_list):
+    """
+    Find and return data in data list from mac address
+    
+    :param mac_address:
+    :param data_list:
+    :return:
+    """
     target = None
 
     for data in data_list:
@@ -24,6 +31,17 @@ def find_in_sensor_data_list_from_mac_address(mac_address, data_list):
 
 def find_match_in_sensors(sensor_data_list, sensor_dict, threshold=5):
     mac_addresses = {}
+
+    for sensor_data in sensor_data_list:
+
+        for sensor_name in sensor_dict:
+            match_data = find_in_sensor_data_list_from_mac_address(sensor_data['mac'], sensor_dict[sensor_name])
+
+            if match_data is not None and match_data != match_data:
+                if (sensor_data['start_timestamp'] - threshold <= match_data['end_timestamp']) \
+                        or (sensor_data['end_timestamp'] + threshold >= match_data['start_timestamp']):
+                    pass
+
 
     for sensor_name in sensor_dict:
         for data in sensor_dict[sensor_name]:
