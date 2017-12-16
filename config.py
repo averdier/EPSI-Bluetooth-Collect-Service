@@ -11,6 +11,7 @@ class Config:
     MQTT_USERNAME = "triangulation_service"
     MQTT_TOKEN = "Viyywn1hMyME83yM"
     MQTT_KEEP_ALIVE = 60
+    ELASTICSEARCH_HOST = "http://vps475171.ovh.net"
 
 
 class DevelopmentConfig(Config):
